@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "zan-popup": "dist/popup/index"
+  },
+  "navigationBarTitleText": "选择座位",
+  "disableScroll": true
+}

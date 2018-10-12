@@ -1,0 +1,32 @@
+/* pages/test/test.wxss */
+
+.poput {
+width:100vw;
+}
+
+.poput-title {
+  height: 100rpx;
+  width: 100%;
+  display: flex;
+  line-height: 100rpx;
+  padding-left: 20rpx;
+  font-size: 24rpx;
+  text-align: left;
+  background: #f8f8f8;
+  border: 1rpx solid #e7e7e7;
+}
+
+.poput-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 120rpx;
+  border: 1rpx solid #e7e7e7;
+  background: white;
+}
+
+.poput-content-text {
+  font-size: 30rpx;
+  padding-left: 20rpx;
+  color: #353333;
+}

@@ -1,0 +1,23 @@
+<view style='width:100% height:100%'>
+  <view style='margin:2rpx 0;border:#DCDCDC solid 2rpx;padding:30rpx 0rpx;'>
+    <view style='margin-left:20rpx; font-size:30rpx; line-height:36rpx; font-weight:bold'>周杰伦20周年巡回演唱会郑州站</view>
+    <view style='margin-left:20rpx; font-size:24rpx;line-height:60rpx;'>2018-09-07 周五 20:00</view>
+  </view>
+  <view class='vote-jp'>
+    <scroll-view style='width:100%' scroll-x='true'>
+      <block wx:for="{{['A','B','C','D','E','F']}}" wx:key="2*this">
+        <view class='vote-jp-content'>
+          <view bindtap='bindPress'data-id="{{item}}" class='vote-jp-content-text' hover-class="vote-jp-content-text-p">{{item}}区</view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+  <view class='view-seat'>
+  <movable-area style="width:100%;height:700rpx;" scale-area>
+  <movable-view style="width:100%;height:700rpx;"scale="true" direction="all" scale-min="1.0" scale-max="2.5">
+      <image style='width:100%' mode="widthFix" src='seat.jpg'></image>
+  </movable-view>
+  </movable-area>
+
+  </view>
+</view>

@@ -1,0 +1,32 @@
+.vote-jp {
+  width: 100%;
+  flex-direction: row;
+  display: flex;
+  background: white;
+  white-space: nowrap;
+}
+
+.vote-jp-content {
+  width: 25%;
+  height: 130rpx;
+  padding: auto 0;
+  flex-direction: column;
+  display: inline-block;
+}
+
+.vote-jp-content-text {
+  margin: 30rpx auto;
+  height: 50rpx;
+  width: 120rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  border: 2rpx solid #dcdcdc;
+}
+.vote-jp-content-text-p{
+  background: rgb(197, 197, 197);
+}
+.view-seat{
+  overflow: hidden;
+}

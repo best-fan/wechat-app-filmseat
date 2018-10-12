@@ -1,0 +1,21 @@
+<!--pages/test/test.wxml-->
+<button bindtap='bindOpenPot'>打开弹窗</button>
+
+<zan-popup type="bottom" show="{{ isShow }}" bindclose="togglePopup">
+<view class='poput'>
+  <view class='poput-title'>A区</view>
+  <view class='poput-content'>
+    <view class='poput-content-text'>580.00元</view>
+    <view class='poput-content-text'>7排5号</view>
+    <view class='poput-content-text'>D门</view>
+    <icon style='margin-right:20rpx' type="clear" size="20"></icon>
+  </view>
+  <view class='poput-content'>
+    <view class='poput-content-text'>580.00元</view>
+    <view class='poput-content-text'>7排5号</view>
+    <view class='poput-content-text'>D门</view>
+    <icon style='margin-right:20rpx' type="clear" size="20"></icon>
+  </view>
+  <view style='heigth:100rpx;width:100vw;'>1</view>
+</view>
+</zan-popup>

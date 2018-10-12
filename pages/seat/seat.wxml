@@ -1,0 +1,104 @@
+<!--pages/seat/seat.wxml-->
+
+<view style='position:relative;z-index:10;'>
+  <!-- 顶部 title -->
+  <view style='border:#DCDCDC solid 2rpx;padding:30rpx 0rpx;background:white'>
+    <view style='margin-left:20rpx; font-size:30rpx; line-height:36rpx; font-weight:bold'>周杰伦20周年巡回演唱会郑州站</view>
+    <view style='margin-left:20rpx; font-size:24rpx;line-height:60rpx;'>2018-09-07 周五 20:00</view>
+  </view>
+  <!-- 中间标志 -->
+  <view class='view-price'>
+    <view class='view-price-num'>
+      <image class='view-price-img' src='img/seat.png'></image>可选</view>
+    <view class='view-price-num'>
+      <image class='view-price-img' src='img/noseat.png'></image>不可选</view>
+    <view class='view-price-num'>
+      <image class='view-price-img' src='img/select.png'></image>已选</view>
+  </view>
+</view>
+
+<view style="height:100%" class='view-seat-all'>
+  <view class='view-seat-top-view'>
+    <view class='view-seat-top'>舞台方向</view>
+  </view>
+  <movable-area style="height:{{movableheight}}rpx" class="view-seat-moa"   scale-area>
+    <movable-view style="height:{{movableheight-50}}rpx" class='view-seat-slide' direction="all" scale="true" scale-min='1.2' scale-max='3.5' scale-value="1.3" x="-100" bindchange="onChange" bindscale="onScale" bindtouchend="touchend" >
+      <view style='margin:80rpx 20rpx;' >
+        <!-- 座位 -->
+        <block wx:for="{{seatArr}}" wx:for-item="items" wx:for-index="id" wx:key="this">
+          <view class='view-seat-location'>
+            <view class='view-seat-index'>{{id+1}}</view>
+            <block wx:for="{{items}}" wx:for-item="item" wx:for-index="id1" wx:key="this">
+              <block wx:if="{{item.num%5==0||item.src=='no'}}">
+                <view class='view-seat-img'></view>
+              </block>
+              <block wx:else>
+                <image class='view-seat-img' mode="scaleToFill" src="img/{{item.src}}" bindtap='bindGetLocation' data-x="{{id}}" data-y="{{id1}}" data-src='{{item.src}}'></image>
+              </block>
+            </block>
+          </view>
+        </block>
+      </view>
+    </movable-view>
+  </movable-area>
+</view>
+<!-- 浮动位置 -->
+<view hidden="{{isHidden}}" style='width:{{floatwidth}}vw;height: {{floatheight}}vh;' class='view-seat-float'>
+  <view class='view-seat-float-text'>舞台方向</view>
+  <view  class='view-seat-float-seat'>
+    <canvas style='  width: {{cawidth}}vw;height: {{caheigth}}vh;top: {{top}}rpx;left:{{left}}rpx;' class='view-seat-float-canvas' canvas-id="firstCanvas"></canvas>
+
+        <block wx:for="{{seatArr}}" wx:for-item="items" wx:for-index="id" wx:key="this">
+          <view class='view-seat-float-location'>
+            <view class='view-seat-float-index'>{{id+1}}</view>
+            <block wx:for="{{items}}" wx:for-item="item" wx:for-index="id1" wx:key="this">
+              <block wx:if="{{item.num%5==0||item.src=='no'}}">
+                <view class='view-seat-float-img'></view>
+              </block>
+              <block wx:else>
+                <image class='view-seat-float-img' src="img/{{item.src}}" data-src='{{item.src}}'></image>
+              </block>
+            </block>
+          </view>
+        </block>
+  </view>
+</view>
+
+
+<view class='view-seat-end'>
+  <view wx:if="{{selectArr.length==0}}" style='width:30%'>
+    <image class='view-seat-end-img' style='width:60rpx;height:60rpx;' src='img/seat.png'></image>
+  </view>
+  <view wx:else style='width:30%'>
+    <image class='view-seat-end-imgs' style='width:60rpx;height:60rpx;' src='img/seatss.png'></image>
+    <view class='view-seat-end-imgs-text'>{{selectArr.length}}</view>
+  </view>
+  <view wx:if="{{selectArr.length==0}}" class='view-seat-end-center'>
+    <view class='view-seat-end-center-text'>请点击座位区域选择位置</view>
+  </view>
+  <view wx:else bindtap='bindShowSeat' class='view-seat-end-center'>
+    <view class='view-seat-end-center-text-price'>{{280*selectArr.length}}</view>
+    <view style="letter-spacing: 10rpx;" class='view-seat-end-center-text'>元|{{selectArr.length}}张</view>
+
+    <image wx:if="{{!isShow}}" style='margin-top:28rpx;;width:25rpx;height:30rpx;' src='img/down.png'></image>
+    <image wx:else style='margin-top:28rpx;;width:25rpx;height:30rpx;' src='img/up.png'></image>
+  </view>
+  <view style='width:30%'>
+    <button class='view-seat-end-btn'>确认选座</button>
+  </view>
+</view>
+
+<zan-popup type="bottom" show="{{ isShow }}" bindclose="togglePopup">
+  <view class='poput'>
+    <view class='poput-title'>A区</view>
+    <block wx:key="3*this" wx:for="{{selectArr}}">
+      <view class='poput-content'>
+        <view class='poput-content-text'>580.00元</view>
+        <view class='poput-content-text'>{{item.x}}排{{item.y}}号</view>
+        <view class='poput-content-text'>D门</view>
+        <icon style='margin-right:20rpx' type="clear" bindtap='binddelete' data-index='{{index}}' data-x='{{item.x}}' data-y='{{item.y}}' size="20"></icon>
+      </view>
+    </block>
+    <view class='poput-end'></view>
+  </view>
+</zan-popup>
